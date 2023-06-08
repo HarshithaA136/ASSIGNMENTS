@@ -1,0 +1,112 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace SimpleCalculator
+{
+    public partial class CalculatorForm : Form
+    {
+        private TextBox displayTextBox;
+        private Button[] numberButtons;
+        private Button addButton;
+        private Button subtractButton;
+        private Button multiplyButton;
+        private Button divideButton;
+        private Button equalsButton;
+        private Button clearButton;
+        private Button decimalButton;
+
+        private double firstOperand;
+        private double secondOperand;
+        private string currentOperator;
+
+        public CalculatorForm()
+        {
+            InitializeComponent();
+            InitializeCalculator();
+        }
+
+        private void InitializeCalculator()
+        {
+            // Create the main display textbox
+            displayTextBox = new TextBox();
+            displayTextBox.Location = new Point(10, 10);
+            displayTextBox.Size = new Size(180, 25);
+            displayTextBox.ReadOnly = true;
+            displayTextBox.TextAlign = HorizontalAlignment.Right;
+            Controls.Add(displayTextBox);
+
+            // Create number buttons
+            numberButtons = new Button[10];
+            for (int i = 0; i < 10; i++)
+            {
+                numberButtons[i] = new Button();
+                numberButtons[i].Text = i.ToString();
+                numberButtons[i].Size = new Size(50, 50);
+                numberButtons[i].Click += NumberButton_Click;
+            }
+
+            // Set positions for number buttons
+            int buttonCount = 0;
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    numberButtons[buttonCount].Location = new Point(10 + col * 60, 50 + row * 60);
+                    Controls.Add(numberButtons[buttonCount]);
+                    buttonCount++;
+                }
+            }
+
+            // Create other buttons
+            addButton = CreateOperatorButton("+", 10, 230);
+            subtractButton = CreateOperatorButton("-", 70, 230);
+            multiplyButton = CreateOperatorButton("*", 130, 230);
+            divideButton = CreateOperatorButton("/", 190, 230);
+            equalsButton = CreateOperatorButton("=", 250, 230);
+
+            clearButton = new Button();
+            clearButton.Text = "C";
+            clearButton.Size = new Size(50, 50);
+            clearButton.Location = new Point(250, 50);
+            clearButton.BackColor = Color.Red;
+            clearButton.ForeColor = Color.White;
+            clearButton.Click += ClearButton_Click;
+            Controls.Add(clearButton);
+
+            decimalButton = new Button();
+            decimalButton.Text = ".";
+            decimalButton.Size = new Size(50, 50);
+            decimalButton.Location = new Point(190, 290);
+            decimalButton.Click += DecimalButton_Click;
+            Controls.Add(decimalButton);
+        }
+
+        private Button CreateOperatorButton(string text, int x, int y)
+        {
+            Button button = new Button();
+            button.Text = text;
+            button.Size = new Size(50, 50);
+            button.Location = new Point(x, y);
+            button.BackColor = Color.Blue;
+            button.ForeColor = Color.White;
+            button.Click += OperatorButton_Click;
+            Controls.Add(button);
+            return button;
+        }
+
+        private void NumberButton_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            displayTextBox.Text += button.Text;
+        }
+
+        private void OperatorButton_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            currentOperator = button.Text;
+            firstOperand = double.Parse(displayTextBox.Text);
+            displayTextBox.Text = "";
+        }
+
+        private void EqualsButton_Click(object sender, EventArgs

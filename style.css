@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatiable" content="IE=edge">
+        <meta name="viewport" content="width=device,initialize">
+        <link rel = "stylesheet" type = "text/css"
+        href = "css/style2.css">
+        <title>Document</title>
+        <style>
+            h1{
+                 font-style: inherit: 'courier New', monospace;
+            }
+        </style>
+    </head> 
+    <body>
+        <h1 style = "color:blueviolet ; font-family: 'Courier New', Courier, monospace;"
+        <h1> We live on Earth </h1>
+        <h1> there are both hell and heaven </h1>
+    </body>
+</html>

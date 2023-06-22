@@ -131,3 +131,18 @@ variables which are created ouside all the methods but inside a class;
 global variables can be used by everyone;
  LOCAL VARIABLES
 hich are defined inside a method  and are decalred inside the method ;
+
+21.06.23
+
+CONSTRUCTOR
+constructor is a method which does not have any keyword 
+
+Constructor is a special method which will not have any retrun type and it's name will the same as t
+the class name 
+constructors are called when we creat an object of the class
+NOTE: when a programmer do not provide single constructor inside the class then the compiler will attach default constructor automatically
+Default constructor will accept 0 parameters ND will have super methods n the 1st line
+Use of SUPER : SUPER keyword is used to call the parent class object and it can be reffered to the parent class constructor 
+
+MAJOR use of "super" is used to eliminate the confusion b/w parent and simple class which has the same method
+name as same
